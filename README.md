@@ -1,23 +1,33 @@
-# TryLoanify
+<div align="center">
 
-[License](LICENSE)  
-[Platform](https://developer.android.com)  
-[Kotlin](https://kotlinlang.org)  
-[Backend](https://fastapi.tiangolo.com)
+<img src="docs/assets/banner.svg" alt="TryLoanify" width="100%"/>
 
-Native Android app with Jetpack Compose, backed by FastAPI microservices for authentication, applications, credit decisioning, documents, and payments.
+<br/>
 
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-5B39F4?style=for-the-badge&labelColor=281C7D" alt="Apache 2.0"/></a>
+&nbsp;
+<a href="https://developer.android.com"><img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Android"/></a>
+&nbsp;
+<a href="https://kotlinlang.org"><img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white" alt="Kotlin"/></a>
+&nbsp;
+<a href="https://fastapi.tiangolo.com"><img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI"/></a>
 
-|            |                                                              |
-| ---------- | ------------------------------------------------------------ |
-| **Client** | Kotlin · Jetpack Compose · Hilt · Room · Retrofit            |
-| **Server** | Python FastAPI · PostgreSQL · Redis · MinIO · Docker Compose |
-| **Focus**  | OTP login · KYC · Offer / KFS · E-sign · Disbursement · EMI  |
+<br/><br/>
 
+### Quick, secure loan origination for the Indian market
 
-This repository is an MVP scaffold for local development and end-to-end customer-journey demos. Live KYC, bureau, and payment-gateway credentials are not included.
+Native Android client with Jetpack Compose, backed by FastAPI microservices  
+for authentication, applications, credit decisioning, documents, and payments.
+
+<br/>
+
+<sub>MVP scaffold for local demos. Live KYC, bureau, and payment credentials are not included.</sub>
+
+<br/>
 
 [View license](LICENSE) · [Open on GitHub](https://github.com/Premkumarr07/Tryloanify)
+
+</div>
 
 ---
 
