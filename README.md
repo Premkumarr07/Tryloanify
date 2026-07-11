@@ -1,8 +1,14 @@
 # TryLoanify
 
+**Digital lending for India — Android client and FastAPI backend**
+
 TryLoanify is a digital lending platform for the Indian market. It supports end-to-end loan origination on Android, including OTP authentication, KYC document capture, credit assessment, loan offer acceptance with Key Fact Statement (KFS) review, e-sign, disbursement, and EMI repayment management.
 
 This repository contains the native Android client and a FastAPI-based backend service suite for local development and MVP iteration.
+
+[License](LICENSE) · [Repository](https://github.com/Premkumarr07/Tryloanify)
+
+---
 
 ## Features
 
