@@ -1,12 +1,23 @@
 # TryLoanify
 
-**Digital lending for India — Android client and FastAPI backend**
+[License](LICENSE)  
+[Platform](https://developer.android.com)  
+[Kotlin](https://kotlinlang.org)  
+[Backend](https://fastapi.tiangolo.com)
 
-TryLoanify is a digital lending platform for the Indian market. It supports end-to-end loan origination on Android, including OTP authentication, KYC document capture, credit assessment, loan offer acceptance with Key Fact Statement (KFS) review, e-sign, disbursement, and EMI repayment management.
+Native Android app with Jetpack Compose, backed by FastAPI microservices for authentication, applications, credit decisioning, documents, and payments.
 
-This repository contains the native Android client and a FastAPI-based backend service suite for local development and MVP iteration.
 
-[License](LICENSE) · [Repository](https://github.com/Premkumarr07/Tryloanify)
+|            |                                                              |
+| ---------- | ------------------------------------------------------------ |
+| **Client** | Kotlin · Jetpack Compose · Hilt · Room · Retrofit            |
+| **Server** | Python FastAPI · PostgreSQL · Redis · MinIO · Docker Compose |
+| **Focus**  | OTP login · KYC · Offer / KFS · E-sign · Disbursement · EMI  |
+
+
+This repository is an MVP scaffold for local development and end-to-end customer-journey demos. Live KYC, bureau, and payment-gateway credentials are not included.
+
+[View license](LICENSE) · [Open on GitHub](https://github.com/Premkumarr07/Tryloanify)
 
 ---
 
@@ -37,12 +48,14 @@ This repository contains the native Android client and a FastAPI-based backend s
 
 ### Backend services
 
-| Service | Port | Responsibility |
-|---------|------|----------------|
+
+| Service             | Port | Responsibility                                        |
+| ------------------- | ---- | ----------------------------------------------------- |
 | application_service | 8001 | OTP auth, JWT, customer profile, applications, offers |
-| decision_engine | 8002 | Eligibility rules and scorecard evaluation |
-| document_service | 8003 | Document upload and e-sign stubs |
-| payment_service | 8004 | Disbursement, repayment schedule, EMI collection |
+| decision_engine     | 8002 | Eligibility rules and scorecard evaluation            |
+| document_service    | 8003 | Document upload and e-sign stubs                      |
+| payment_service     | 8004 | Disbursement, repayment schedule, EMI collection      |
+
 
 Infrastructure for local development includes PostgreSQL, Redis, and MinIO via Docker Compose.
 
@@ -90,7 +103,7 @@ cd Tryloanify
 sdk.dir=/path/to/Android/sdk
 ```
 
-4. Build and run the `app` configuration, or from the terminal:
+1. Build and run the `app` configuration, or from the terminal:
 
 ```bash
 ./gradlew assembleDebug
@@ -113,10 +126,10 @@ docker compose up --build
 
 Service health checks:
 
-- http://localhost:8001/health
-- http://localhost:8002/health
-- http://localhost:8003/health
-- http://localhost:8004/health
+- [http://localhost:8001/health](http://localhost:8001/health)
+- [http://localhost:8002/health](http://localhost:8002/health)
+- [http://localhost:8003/health](http://localhost:8003/health)
+- [http://localhost:8004/health](http://localhost:8004/health)
 
 #### Point the Android app at the API
 
@@ -127,13 +140,13 @@ In `app/build.gradle.kts` (or build type `buildConfigField` values):
 
 ## Customer journey
 
-1. Splash and OTP authentication  
-2. Profile and consent  
-3. Loan application form  
-4. Document upload and KYC  
-5. Offer review (amount, rate, EMI, APR, KFS)  
-6. E-sign and disbursement  
-7. Loan dashboard and EMI payment  
+1. Splash and OTP authentication
+2. Profile and consent
+3. Loan application form
+4. Document upload and KYC
+5. Offer review (amount, rate, EMI, APR, KFS)
+6. E-sign and disbursement
+7. Loan dashboard and EMI payment
 
 ## Compliance notes (MVP UI)
 
@@ -148,13 +161,15 @@ Production integrations (live KYC, bureau, payment gateway, Aadhaar eSign, and I
 
 ## Configuration
 
-| Setting | Location | Description |
-|---------|----------|-------------|
-| `USE_FAKE` | `app/build.gradle.kts` | Use in-memory fake repositories when `true` |
-| `API_BASE_URL` | `app/build.gradle.kts` | Base URL for Application Service |
-| `JWT_SECRET` | backend env | Signing secret for access/refresh tokens |
-| `REDIS_URL` | backend env | Redis connection for OTP storage |
-| `DATABASE_URL` | backend env | PostgreSQL URL (when wired beyond in-memory stores) |
+
+| Setting        | Location               | Description                                         |
+| -------------- | ---------------------- | --------------------------------------------------- |
+| `USE_FAKE`     | `app/build.gradle.kts` | Use in-memory fake repositories when `true`         |
+| `API_BASE_URL` | `app/build.gradle.kts` | Base URL for Application Service                    |
+| `JWT_SECRET`   | backend env            | Signing secret for access/refresh tokens            |
+| `REDIS_URL`    | backend env            | Redis connection for OTP storage                    |
+| `DATABASE_URL` | backend env            | PostgreSQL URL (when wired beyond in-memory stores) |
+
 
 ## Development
 
@@ -184,4 +199,4 @@ limitations under the License.
 
 ## Repository
 
-https://github.com/Premkumarr07/Tryloanify
+[https://github.com/Premkumarr07/Tryloanify](https://github.com/Premkumarr07/Tryloanify)
