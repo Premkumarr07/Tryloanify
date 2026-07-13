@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="TryLoanify">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#281C7D"/>
+      <stop offset="45%" stop-color="#5B39F4"/>
+      <stop offset="100%" stop-color="#8B72FF"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+  <circle cx="1040" cy="40" r="120" fill="#FFFFFF" fill-opacity="0.06"/>
+  <circle cx="160" cy="280" r="160" fill="#FFFFFF" fill-opacity="0.05"/>
+  <rect x="0" y="140" width="1200" height="40" fill="url(#glow)"/>
+  <text x="600" y="145" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF">TryLoanify</text>
+  <text x="600" y="195" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="24" fill="#E8E4FF">Digital lending for India</text>
+  <text x="600" y="245" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="18" fill="#D4CCFF">Android � Jetpack Compose � FastAPI � Secure OTP � KYC � EMI</text>
+</svg>
