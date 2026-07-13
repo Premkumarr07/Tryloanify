@@ -1,27 +1,43 @@
 package com.example.tryloanify.presentation.profile
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBalance
+import androidx.compose.material.icons.filled.Description
+import androidx.compose.material.icons.filled.HelpOutline
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material.icons.filled.Logout
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Shield
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.tryloanify.component.AppButton
 import com.example.tryloanify.domain.model.Customer
 import com.example.tryloanify.navigation.Screen
 import com.example.tryloanify.presentation.auth.AuthViewModel
+import com.example.tryloanify.presentation.profile.components.ProfileCard
+import com.example.tryloanify.presentation.profile.components.ReferEarnCard
+import com.example.tryloanify.presentation.profile.components.SettingsMenuItem
 import com.example.tryloanify.ui.theme.Appcolors
 
 @Composable
@@ -35,31 +51,120 @@ fun ProfileScreen(
         customer = viewModel.getCurrentCustomer()
     }
 
-    Column(modifier = Modifier.fillMaxSize().padding(24.dp)) {
-        Text("Profile", fontSize = 26.sp, fontWeight = FontWeight.Bold, color = Appcolors.Text)
-        Spacer(modifier = Modifier.height(24.dp))
-        customer?.let {
-            Text(it.fullName, fontSize = 20.sp, fontWeight = FontWeight.SemiBold)
-            Text("+91 ${it.phone}", color = Appcolors.TextSecondary)
-            Text(it.email, color = Appcolors.TextSecondary)
-            Text("PAN: ${it.panNumber.take(2)}****${it.panNumber.takeLast(2)}", color = Appcolors.TextSecondary)
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Appcolors.Background),
+        contentPadding = PaddingValues(20.dp),
+        verticalArrangement = Arrangement.spacedBy(20.dp)
+    ) {
+        item {
+            Column {
+                Text("My Profile", fontSize = 26.sp, fontWeight = FontWeight.Bold, color = Appcolors.Text)
+                Text(
+                    "Manage your account and preferences",
+                    fontSize = 14.sp,
+                    color = Appcolors.TextSecondary
+                )
+            }
         }
-        Spacer(modifier = Modifier.height(32.dp))
-        Text("Legal & Support", fontWeight = FontWeight.SemiBold)
-        Spacer(modifier = Modifier.height(8.dp))
-        Text("Privacy Policy", color = Appcolors.Primary)
-        Text("Fair Practices Code", color = Appcolors.Primary)
-        Text("Grievance: grievance@tryloanify.com", color = Appcolors.TextSecondary, fontSize = 14.sp)
-        Text("RBI Ombudsman: 14448", color = Appcolors.TextSecondary, fontSize = 14.sp)
-        Spacer(modifier = Modifier.height(32.dp))
-        AppButton(
-            text = "Logout",
-            onClick = {
-                viewModel.logout()
-                navController.navigate(Screen.Login.route) {
-                    popUpTo(0)
+
+        item {
+            ProfileCard(
+                name = customer?.fullName ?: "Prem Kumar",
+                phone = customer?.let { "+91 ${it.phone}" } ?: "+91 98765 43210",
+                email = customer?.email ?: "premkumar@email.com",
+                onCardClick = { },
+                onEditClick = { }
+            )
+        }
+
+        item {
+            Text("Account & Settings", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Appcolors.Text)
+        }
+
+        item {
+            Card(
+                shape = RoundedCornerShape(16.dp),
+                colors = CardDefaults.cardColors(containerColor = Appcolors.Card),
+                elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+            ) {
+                Column(modifier = Modifier.padding(horizontal = 16.dp)) {
+                    SettingsMenuItem(
+                        title = "Personal Information",
+                        subtitle = "Update your personal details",
+                        icon = Icons.Filled.Person,
+                        iconBackground = Appcolors.iconBgBlue,
+                        iconTint = Appcolors.iconTintBlue,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "KYC & Verification",
+                        subtitle = "View and update KYC details",
+                        icon = Icons.Filled.Shield,
+                        iconBackground = Appcolors.iconBgGreen,
+                        iconTint = Appcolors.iconTintGreen,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "Security",
+                        subtitle = "Change password, PIN & biometrics",
+                        icon = Icons.Filled.Lock,
+                        iconBackground = Appcolors.iconBgPurple,
+                        iconTint = Appcolors.iconTintPurple,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "Notifications",
+                        subtitle = "Manage your notification preferences",
+                        icon = Icons.Filled.Notifications,
+                        iconBackground = Appcolors.iconBgYellow,
+                        iconTint = Appcolors.iconTintYellow,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "Bank Accounts",
+                        subtitle = "View and manage linked accounts",
+                        icon = Icons.Filled.AccountBalance,
+                        iconBackground = Appcolors.iconBgBlue,
+                        iconTint = Appcolors.iconTintBlue,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "Documents",
+                        subtitle = "View uploaded documents",
+                        icon = Icons.Filled.Description,
+                        iconBackground = Appcolors.iconBgPurple,
+                        iconTint = Appcolors.iconTintPurple,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "Help & Support",
+                        subtitle = "Get help and contact support",
+                        icon = Icons.Filled.HelpOutline,
+                        iconBackground = Appcolors.iconBgTeal,
+                        iconTint = Appcolors.iconTintTeal,
+                        onClick = { }
+                    )
+                    SettingsMenuItem(
+                        title = "Logout",
+                        subtitle = "Securely logout from your account",
+                        icon = Icons.Filled.Logout,
+                        iconBackground = Appcolors.iconBgRed,
+                        iconTint = Appcolors.iconTintRed,
+                        onClick = {
+                            viewModel.logout()
+                            navController.navigate(Screen.Login.route) {
+                                popUpTo(0)
+                            }
+                        }
+                    )
                 }
-            },
-        )
+            }
+        }
+
+        item {
+            ReferEarnCard(onReferClick = { })
+        }
     }
 }

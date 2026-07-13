@@ -51,7 +51,7 @@ fun PrimaryTextField(
                 .padding(top = 8.dp)
                 .clip(RoundedCornerShape(14.dp))
                 .border(1.dp, Appcolors.Border, RoundedCornerShape(14.dp))
-                .background(Appcolors.Surface)
+                .background(Appcolors.white)
                 .padding(horizontal = 16.dp, vertical = 14.dp),
             textStyle = androidx.compose.ui.text.TextStyle(
                 color = Appcolors.Text,
@@ -85,7 +85,7 @@ fun OtpInput(
                     .height(56.dp)
                     .clip(RoundedCornerShape(12.dp))
                     .border(1.dp, if (char.isNotEmpty()) Appcolors.Primary else Appcolors.Border, RoundedCornerShape(12.dp))
-                    .background(Appcolors.Surface),
+                    .background(Appcolors.white),
                 contentAlignment = Alignment.Center,
             ) {
                 Text(text = char, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Appcolors.Text)
@@ -176,7 +176,7 @@ fun LoanSummaryCard(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(18.dp))
-            .background(Appcolors.Surface)
+            .background(Appcolors.white)
             .border(1.dp, Appcolors.Border, RoundedCornerShape(18.dp))
             .padding(20.dp),
     ) {
