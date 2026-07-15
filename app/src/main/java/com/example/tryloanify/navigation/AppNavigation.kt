@@ -36,7 +36,8 @@ fun AppNavigation() {
             composable(
                 route = Screen.Otp.route,
                 arguments = listOf(navArgument("phone") { type = NavType.StringType }),
-            ) { entry ->
+            ) {
+                entry ->
                 OtpScreen(phone = entry.arguments?.getString("phone").orEmpty(), navController = navController)
             }
             composable(Screen.ProfileSetup.route) { ProfileSetupScreen(navController) }

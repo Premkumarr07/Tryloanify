@@ -1,5 +1,6 @@
 package com.example.tryloanify.presentation.auth
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +21,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.tryloanify.component.AppButton
+import com.example.tryloanify.component.AuthTopBar
 import com.example.tryloanify.component.OtpInput
 import com.example.tryloanify.navigation.Screen
 import com.example.tryloanify.presentation.common.UiState
@@ -56,8 +58,18 @@ fun OtpScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp),
+            .background(Appcolors.white),
     ) {
+
+        AuthTopBar(
+            onBackClick = { navController.popBackStack() },
+            onHelpClick = { /* help */ },
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 20.dp),
+        ) {
         Spacer(modifier = Modifier.height(60.dp))
         Text("Verify OTP", fontSize = 28.sp, fontWeight = FontWeight.Bold, color = Appcolors.Text)
         Spacer(modifier = Modifier.height(8.dp))
@@ -74,6 +86,6 @@ fun OtpScreen(
             loading = state is UiState.Loading,
             enabled = otp.length == 6,
             onClick = { viewModel.verifyOtp(phone, otp) },
-        )
+        )}
     }
 }

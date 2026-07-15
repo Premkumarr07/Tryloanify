@@ -8,9 +8,15 @@ object Appcolors {
     val PrimaryLight = Color(0xFF8B72FF)
     val avatar = Color(0xFFEAF2FF)
     val nametext = Color(0xFF2962FF)
+    val cotaniner = Color(0xFF2962FF)
     val white = Color.White
     val Card = Color(0xFFF8F8FA)
     val Text = Color(0xFF1A1A1A)
+ // app bar color
+    val PrimaryAppbar       = Color(0xFF4C3BCA)
+    val TextPrimary   = Color(0xFF0F1523)
+    val TextSecondaryAppbar = Color(0xFF6B7280)
+    val BorderColor   = Color(0xFFE4E6F0)
     val profilename = Color(0xFF0F172A)
     val TextSecondary = Color(0xFF5F6475)
     val backgroudcard = Color(0xFFEAFBF0)
